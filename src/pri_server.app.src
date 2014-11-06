@@ -1,0 +1,22 @@
+{application, pri_server,
+ [{description, "GenServer with priorities"},
+  {vsn, "0.0.1"},
+  {applications, [kernel, stdlib]}
+ ]
+}.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
