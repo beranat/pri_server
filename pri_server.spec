@@ -10,8 +10,7 @@ Release:	0.1%{?dist}
 Summary:	Erlang OTP GenServer Extension
 Group:		Development/Libraries
 License:	EPL
-URL:		https://github.com/xxx
-
+URL:		http://github.com/madrat-/pri_server.git
 Source0:	%{upstream}-%{realname}-%{version}-%{patchnumber}-g%{git_tag}.tar.bz2
 
 BuildRequires:	erlang-erts
@@ -29,7 +28,8 @@ Erlang OTP GenServer Extension, which allows add priorities to call/cast events
 %setup -q -n %{realname}
 
 %build
-rebar compile -v
+export VSN=%{version}-%{release}
+make compile
 
 %install
 mkdir -p %{buildroot}%{_libdir}/erlang/lib/%{realname}-%{version}/ebin
@@ -40,7 +40,7 @@ install -m 644 ebin/*.beam %{buildroot}%{_libdir}/erlang/lib/%{realname}-%{versi
 #cp -a priv %{buildroot}%{_libdir}/erlang/lib/%{realname}-%{version}/
 
 %check
-rebar eunit -v
+make test
 
 %files
 %doc LICENSE README.md

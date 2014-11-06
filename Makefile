@@ -7,7 +7,7 @@ get-deps:
 	@$(REBAR) get-deps
 
 compile:
-	@$(REBAR) compile
+	@$(REBAR) -v compile
 
 eunit:
 	@$(REBAR) skip_deps=true eunit
