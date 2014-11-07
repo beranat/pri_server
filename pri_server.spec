@@ -1,17 +1,20 @@
-%global realname pri_server
 %global upstream madrat
-%global debug_package %{nil}
+%global realname pri_server
 %global git_tag head
+
+# Later, when patch files will be added
 %global patchnumber 0
+
+%global debug_package %{nil}
 
 Name:		erlang-%{realname}
 Version:	1.0.0
-Release:	0.1%{?dist}
+Release:	0.%{?patchnumber}%{?dist}
 Summary:	Erlang OTP GenServer Extension
 Group:		Development/Libraries
 License:	EPL
 URL:		http://github.com/madrat-/pri_server.git
-#Source0:	%{upstream}-%{realname}-%{version}-%{patchnumber}-g%{git_tag}.tar.bz2
+Source0:	%{upstream}-%{realname}-%{version}-g%{git_tag}.tar.bz2
 
 BuildRequires:	erlang-erts
 BuildRequires:	erlang-rebar
