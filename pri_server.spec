@@ -8,7 +8,7 @@
 %global debug_package %{nil}
 
 Name:		erlang-%{realname}
-Version:	1.0.0
+Version:	1.0.1
 Release:	0.%{?patchnumber}%{?dist}
 Summary:	Erlang OTP GenServer Extension
 Group:		Development/Libraries
@@ -39,7 +39,7 @@ mkdir -p %{buildroot}%{_libdir}/erlang/lib/%{realname}-%{version}/ebin
 #mkdir -p %{buildroot}%{_libdir}/erlang/lib/%{realname}-%{version}/include
 install -m 644 ebin/%{realname}.app %{buildroot}%{_libdir}/erlang/lib/%{realname}-%{version}/ebin
 install -m 644 ebin/*.beam %{buildroot}%{_libdir}/erlang/lib/%{realname}-%{version}/ebin
-#install -m 644 include/*.hrl %{buildroot}%{_libdir}/erlang/lib/%{realname}-%{version}/include
+install -m 644 include/*.hrl %{buildroot}%{_libdir}/erlang/lib/%{realname}-%{version}/include
 #cp -a priv %{buildroot}%{_libdir}/erlang/lib/%{realname}-%{version}/
 
 %check
@@ -47,9 +47,11 @@ make test
 
 %files
 %doc LICENSE README.md
-#%{_bindir}/rebar
 %{_libdir}/erlang/lib/%{realname}-%{version}
 
 %changelog
+* Tue Nov 3 2015 Anatoly madRat L. Berenblit - 1.0.1
+- module for EUNIT testing
+
 * Tue Nov 3 2015 Anatoly madRat L. Berenblit - 1.0.0
 - Initial build
