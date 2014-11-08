@@ -22,7 +22,7 @@ pri_server_emu_init(Args) ->
 
 	ok = meck:expect(pri_server, reply, fun pri_server_emu_server_reply/2),
 
-	State = pri_server_emu_init([]),
+	State = erlang:apply(?MODULE, init, Args),
 	ets:new(?PRI_SERVER_EMU_TABLE, [named_table, set, private]),
 	Result = init(Args),
 	?assertNot(pri_server_emu_has(reply)),
@@ -35,7 +35,7 @@ pri_server_emu_init(Args) ->
 pri_server_emu_done() ->
 	?assertNot(pri_server_emu_has(reply)),
 	State = pri_server_emu_get(state),
-	terminate(State, 'pri_server_emulation_completed'),
+	erlang:apply(?MODULE, terminate, [State, 'pri_server_emulation_completed']),
 	catch ets:delete(?PRI_SERVER_EMU_TABLE),
 	ok = meck:unload(pri_server).
 
@@ -85,7 +85,7 @@ pri_server_emu_server_call(ServerRef, Request, Timeout, Priority) ->
 	?assertNot(pri_server_emu_has(reply)), % pri_server_emu_clear(reply),
 	State = pri_server_emu_get(state),
 
-	{Reply1, State1} = case handle_call(Request, ?PRI_SERVER_EMU_CLIENT, State) of
+	{Reply1, State1} = case erlang:apply(?MODULE, handle_call, [Request, ?PRI_SERVER_EMU_CLIENT, State]) of
 		{reply, Reply, NewState} ->
 			?assertNot(pri_server_emu_has(reply)),
 			{Reply, NewState};
@@ -127,7 +127,7 @@ pri_server_emu_server_cast(ServerRef, Request, Priority) ->
 	?assertNot(pri_server_emu_has(reply)), % pri_server_emu_clear(reply),
 	State = pri_server_emu_get(state),
 
-	State1 = case handle_cast(Request, State) of
+	State1 = case erlang:apply(?MODULE, handle_cast, [Request, State]) of
 		{noreply,NewState} ->
 			?assertNot(pri_server_emu_has(reply)),
 			NewState;

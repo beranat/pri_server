@@ -35,8 +35,8 @@ export VSN=%{version}
 make compile
 
 %install
-mkdir -p %{buildroot}%{_libdir}/erlang/lib/%{realname}-%{version}/ebin
-#mkdir -p %{buildroot}%{_libdir}/erlang/lib/%{realname}-%{version}/include
+install -m 755 -p -d %{buildroot}%{_libdir}/erlang/lib/%{realname}-%{version}/ebin
+install -m 755 -p -d %{buildroot}%{_libdir}/erlang/lib/%{realname}-%{version}/include
 install -m 644 ebin/%{realname}.app %{buildroot}%{_libdir}/erlang/lib/%{realname}-%{version}/ebin
 install -m 644 ebin/*.beam %{buildroot}%{_libdir}/erlang/lib/%{realname}-%{version}/ebin
 install -m 644 include/*.hrl %{buildroot}%{_libdir}/erlang/lib/%{realname}-%{version}/include
