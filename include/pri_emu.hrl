@@ -22,9 +22,8 @@ pri_server_emu_init(Args) ->
 
 	ok = meck:expect(pri_server, reply, fun pri_server_emu_server_reply/2),
 
-	State = erlang:apply(?MODULE, init, Args),
 	ets:new(?PRI_SERVER_EMU_TABLE, [named_table, set, private]),
-	Result = init(Args),
+	Result = erlang:apply(?MODULE, init, [Args]),
 	?assertNot(pri_server_emu_has(reply)),
 	?assertMatch({ok, _State}, Result),
 	{ok, State} = Result,
