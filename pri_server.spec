@@ -50,7 +50,7 @@ make test
 %{_libdir}/erlang/lib/%{realname}-%{version}
 
 %changelog
-* Wed Jun 2015 Anatoly madRat L. Berenblit - 1.0.5
+* Wed Jul 15 2015 Anatoly madRat L. Berenblit - 1.0.5
 - erlang R17 support 
 
 * Tue Nov 3 2014 Anatoly madRat L. Berenblit - 1.0.1
