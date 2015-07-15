@@ -8,7 +8,7 @@
 %global debug_package %{nil}
 
 Name:		erlang-%{realname}
-Version:	1.0.1
+Version:	1.0.5
 Release:	0.%{?patchnumber}%{?dist}
 Summary:	Erlang OTP GenServer Extension
 Group:		Development/Libraries
@@ -50,8 +50,11 @@ make test
 %{_libdir}/erlang/lib/%{realname}-%{version}
 
 %changelog
-* Tue Nov 3 2015 Anatoly madRat L. Berenblit - 1.0.1
+* Wed Jun 2015 Anatoly madRat L. Berenblit - 1.0.5
+- erlang R17 support 
+
+* Tue Nov 3 2014 Anatoly madRat L. Berenblit - 1.0.1
 - module for EUNIT testing
 
-* Tue Nov 3 2015 Anatoly madRat L. Berenblit - 1.0.0
+* Tue Nov 3 2014 Anatoly madRat L. Berenblit - 1.0.0
 - Initial build
