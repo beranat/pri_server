@@ -202,6 +202,7 @@ call(Name, Request, Timeout) ->
 	    exit({Reason, {?MODULE, call, [Name, Request, Timeout]}})
     end.
 
+-spec call(term(), term(), infinity | integer(), priority()) -> term().
 call(Name, Request, Timeout, Priority) ->
     case catch gen:call(Name, {'$priority_call', Priority}, Request, Timeout) of
 	{ok,Res} ->
@@ -216,6 +217,7 @@ call(Name, Request, Timeout, Priority) ->
 cast(Dest, Request) ->
     cast(Dest, Request, normal).
 
+-spec cast(term(), term(), priority()) -> term().
 cast({global,Name}, Request, Priority) ->
     catch global:send(Name, cast_msg(Request, Priority)),
     ok;

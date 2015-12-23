@@ -9,7 +9,7 @@
 
 Name:		erlang-%{realname}
 Version:	1.0.7
-Release:	0.%{?patchnumber}%{?dist}
+Release:	1.%{?patchnumber}%{?dist}
 Summary:	Erlang OTP GenServer Extension
 Group:		Development/Libraries
 License:	EPL
@@ -21,7 +21,7 @@ BuildRequires:	erlang-rebar
 
 Requires:	erlang-erts%{?_isa}
 Requires:	erlang-kernel%{?_isa}
-Requires:	erlang-stdlib%{?_isa} = 17
+Requires:	erlang-stdlib%{?_isa} >= 17
 Provides:	%{realname} = %{version}-%{release}
 
 %description
