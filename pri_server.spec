@@ -8,7 +8,7 @@
 %global debug_package %{nil}
 
 Name:		erlang-%{realname}
-Version:	1.0.5
+Version:	1.0.7
 Release:	0.%{?patchnumber}%{?dist}
 Summary:	Erlang OTP GenServer Extension
 Group:		Development/Libraries
@@ -21,7 +21,7 @@ BuildRequires:	erlang-rebar
 
 Requires:	erlang-erts%{?_isa}
 Requires:	erlang-kernel%{?_isa}
-Requires:	erlang-stdlib%{?_isa}
+Requires:	erlang-stdlib%{?_isa} = 17
 Provides:	%{realname} = %{version}-%{release}
 
 %description
@@ -50,6 +50,9 @@ make test
 %{_libdir}/erlang/lib/%{realname}-%{version}
 
 %changelog
+* Wed Dek 23 2015 Anatoly madRat L. Berenblit - 1.0.7
+- erlang 17 full support 
+
 * Wed Jul 15 2015 Anatoly madRat L. Berenblit - 1.0.5
 - erlang R17 support 
 
