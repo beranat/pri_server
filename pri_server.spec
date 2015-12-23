@@ -1,6 +1,6 @@
 %global upstream madrat
 %global realname pri_server
-%global git_tag head
+%global git_tag head 
 
 # Later, when patch files will be added
 %global patchnumber 0
@@ -50,14 +50,14 @@ make test
 %{_libdir}/erlang/lib/%{realname}-%{version}
 
 %changelog
-* Wed Dek 23 2015 Anatoly madRat L. Berenblit - 1.0.7
+* Wed Dec 23 2015 Anatoly madRat L. Berenblit - 1.0.7
 - erlang 17 full support 
 
 * Wed Jul 15 2015 Anatoly madRat L. Berenblit - 1.0.5
 - erlang R17 support 
 
-* Tue Nov 3 2014 Anatoly madRat L. Berenblit - 1.0.1
+* Mon Nov 3 2014 Anatoly madRat L. Berenblit - 1.0.1
 - module for EUNIT testing
 
-* Tue Nov 3 2014 Anatoly madRat L. Berenblit - 1.0.0
+* Mon Nov 3 2014 Anatoly madRat L. Berenblit - 1.0.0
 - Initial build

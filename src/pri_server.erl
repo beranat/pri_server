@@ -233,7 +233,8 @@ do_cast(Dest, Request, Priority) ->
     do_send(Dest, cast_msg(Request, Priority)),
     ok.
 
-cast_msg(Request, Priority) -> {{'$priority_cast', Priority}, Request}.
+cast_msg(Request, Priority) ->
+	{{'$priority_cast', Priority}, Request}.
 
 %% -----------------------------------------------------------------
 %% Send a reply to the client.
@@ -245,10 +246,10 @@ reply({To, Tag}, Reply) ->
 %% Asynchronous broadcast, returns nothing, it's just send 'n' pray
 %%-----------------------------------------------------------------
 abcast(Name, Request) when is_atom(Name) ->
-    do_abcast([node() | nodes()], Name, cast_msg(Request)).
+    do_abcast([node() | nodes()], Name, cast_msg(Request, normal)).
 
 abcast(Nodes, Name, Request) when is_list(Nodes), is_atom(Name) ->
-    do_abcast(Nodes, Name, cast_msg(Request)).
+    do_abcast(Nodes, Name, cast_msg(Request, normal)).
 
 do_abcast([Node|Nodes], Name, Msg) when is_atom(Node) ->
     do_send({Name,Node},Msg),
